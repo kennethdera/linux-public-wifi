@@ -1,0 +1,12 @@
+[package]
+name = "daemon"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7"
+tokio = { version = "1", features = ["full"] }
+shared = { path = "../shared" }
+serde = { version = "1.0", features = ["derive"] }
+tower-http = { version = "0.5", features = ["fs"] }
+askama = "0.12"

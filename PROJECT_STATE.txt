@@ -1,0 +1,48 @@
+PROJECT: Linux Public WiFi (Rust Version)
+PATH: /home/caesar/Documents/Projects/linux-public-wifi
+
+=== STATE SUMMARY ===
+Goal: Recreate MyPublicWiFi functionality on Linux (Captive Portal + Voucher System).
+Current Status: Fully rewritten in Rust for performance and native distribution.
+
+=== TECH STACK ===
+- Language: Rust (Cargo Workspace)
+- GUI: Slint (Compiled native UI)
+- Portal: Axum + Tokio (Async high-performance web server)
+- Database: SQLite (via rusqlite)
+- OS Tools: hostapd (AP mode), dnsmasq (DHCP/DNS), iptables (Firewall/Gatekeeper)
+
+=== COMPLETED FEATURES ===
+1. Core Engine (shared crate):
+   - SQLite DB for voucher management (codes, duration, usage).
+   - MAC-based authorization via iptables.
+   - Automated MAC retrieval logic.
+
+2. Captive Portal (daemon crate):
+   - Async server running on port 80.
+   - Responsive HTML/CSS landing page.
+   - Voucher validation and automatic firewall unlocking.
+
+3. Management App (manager crate):
+   - Native GUI to toggle Hotspot (via systemd).
+   - Voucher generator (add codes and durations).
+   - "Setup System" button: Automates service installation, path fixing, and systemd enabling.
+
+4. OS Integration:
+   - Systemd service file for background daemon.
+   - .desktop file for application menu integration.
+   - install.sh script for binary deployment, icon setup, and menu registration.
+   - AUR PKGBUILD prepared for Arch Linux distribution.
+
+=== CURRENT RUN-GUIDE ===
+1. Build: cargo build --release
+2. Install: sudo ./install.sh
+3. Run: /usr/local/bin/linux-public-wifi-manager
+(Note: Removed all nested .git directories in subfolders to prevent git submodule issues)
+
+=== FUTURE IMPROVEMENTS (CHECKPOINTS) ===
+- [ ] MAC Extraction: Replace mock MAC with real extraction from ARP/DHCP leases.
+- [ ] Time-based Expiry: Implement a background thread to revoke iptables access after duration expires.
+- [ ] Bandwidth Limiting: Integrate 'tc' (Traffic Control) to set speed limits per user.
+- [ ] Interface Selection: Add a dropdown in the GUI to select the WiFi card (e.g., wlp3s0 vs wlan0).
+- [ ] Admin Dashboard: Expand Slint GUI to show real-time data usage and active session counts.

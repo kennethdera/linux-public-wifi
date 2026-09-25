@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Linux Public WiFi
+Comment=Manage your public WiFi hotspot and vouchers
+Exec=/usr/local/bin/linux-public-wifi-manager
+Icon=linux-public-wifi
+Terminal=false
+Categories=Network;Settings;

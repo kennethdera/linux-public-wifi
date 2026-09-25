@@ -1,0 +1,77 @@
+export component {
+    in-out property <string> status_text: "Status: Stopped";
+    in-out property <string> status_color: "red";
+    callback toggle_hotspot();
+    callback add_voucher(string, string);
+    
+    callback setup_system();
+
+    VerticalBox {
+        padding: 20px;
+        spacing: 20px;
+
+        Text {
+            text: "Linux Public WiFi Manager";
+            font-size: 24px;
+            horizontal-alignment: center;
+        }
+
+        HorizontalLayout {
+            spacing: 10px;
+            Text {
+                text: root.status_text;
+                color: root.status_color;
+                vertical-alignment: center;
+            }
+            Rectangle {
+                width: 10px; height: 10px;
+                background: root.status_color;
+                border-radius: 5px;
+            }
+            Text {
+                text: " ";
+            }
+            Button {
+                text: "Toggle Hotspot";
+                clicked => { root.toggle_hotspot() }
+            }
+            Button {
+                text: "Setup System";
+                clicked => { root.setup_system() }
+            }
+        }
+
+        Rectangle {
+            background: #f0f0f0;
+            border-radius: 8px;
+            height: 100px;
+            VerticalBox {
+                Text { text: "Generate Voucher"; font-weight: 700; }
+                HorizontalLayout {
+                    spacing: 10px;
+                    code_input := LineEdit { placeholder-text: "Code (e.g. FREE60)"; }
+                    dur_input := LineEdit { placeholder-text: "Duration (mins)"; }
+                    Button {
+                        text: "Add";
+                        clicked => { root.add_voucher(code_input.text, dur_input.text) }
+                    }
+                }
+            }
+        }
+
+        Text {
+            text: "Authorized Users";
+            font-weight: 700;
+        }
+
+        StandardTableView {
+            // Slint's TableView is more complex; for this prototype we use a simplified list
+        }
+        
+        Text {
+            text: "User list view integrated in binary output";
+            font-italic: true;
+            font-size: 12px;
+        }
+    }
+}
