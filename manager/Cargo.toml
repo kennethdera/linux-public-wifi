@@ -7,3 +7,6 @@ edition = "2021"
 slint = "1.7"
 shared = { path = "../shared" }
 serde = { version = "1.0", features = ["derive"] }
+
+[build-dependencies]
+slint-build = "1.7"

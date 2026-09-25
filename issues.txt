@@ -1,0 +1,37 @@
+[Edit when I say it has been fixed]
+
+MAJOR 
+
+linux-public-wifi-ap.service - Linux Public WiFi Hotspot (AP a>
+     Loaded: loaded (/etc/systemd/system/linux-public-wifi-ap.se>
+     Active: failed (Result: start-limit-hit) since Fri 2026-09->
+ Invocation: 249d6fda725c42019d5d9cc28b5f3222
+    Process: 81229 ExecStartPre=/usr/bin/hostapd /etc/linux-publ>
+   Mem peak: 2.2M
+        CPU: 27ms
+
+Sep 25 09:57:33 blackstar systemd[1]: linux-public-wifi-ap.servi>
+Sep 25 09:57:33 blackstar systemd[1]: linux-public-wifi-ap.servi>
+Sep 25 09:57:33 blackstar systemd[1]: linux-public-wifi-ap.servi>
+Sep 25 09:57:33 blackstar systemd[1]: Failed to start Linux Publ>
+lines 1-12/12 (END)
+
+the status says running but i cannot see any hotspot on my other device
+there is not an option to set the ssid and password of the wifi 
+on the windows there are 3 options [WAN Hotspot, WLAN Repeater, Multifunctional Hotspot] 
+It also need to see internet from ethernet right. Is this the main reason for the first issue.
+
+
+MINOR
+UI needs a rework almost identical to the windows app
+warning: unused import: `Redirect`
+ --> daemon/src/main.rs:3:22
+  |
+3 |     response::{Html, Redirect},
+  |                      ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+
+COncern
+I hope all these issues wont happen when i ship this to another machine or publish the project for others to use

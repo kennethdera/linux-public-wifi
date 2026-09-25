@@ -1,9 +1,10 @@
-export component {
+import { Button, LineEdit, VerticalBox } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    in-out property <brush> status_color: #ff0000;
     in-out property <string> status_text: "Status: Stopped";
-    in-out property <string> status_color: "red";
     callback toggle_hotspot();
     callback add_voucher(string, string);
-    
     callback setup_system();
 
     VerticalBox {
@@ -62,10 +63,6 @@ export component {
         Text {
             text: "Authorized Users";
             font-weight: 700;
-        }
-
-        StandardTableView {
-            // Slint's TableView is more complex; for this prototype we use a simplified list
         }
         
         Text {

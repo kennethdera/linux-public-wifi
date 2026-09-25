@@ -1,0 +1,14 @@
+[Unit]
+Description=Linux Public WiFi Hotspot (AP and DNS)
+After=network.target
+
+[Service]
+# Start hostapd in background mode
+ExecStartPre=/usr/bin/hostapd -B /etc/linux-public-wifi/hostapd.conf
+# Start dnsmasq for DHCP and DNS
+ExecStart=/usr/bin/dnsmasq -C /etc/linux-public-wifi/dnsmasq.conf
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
